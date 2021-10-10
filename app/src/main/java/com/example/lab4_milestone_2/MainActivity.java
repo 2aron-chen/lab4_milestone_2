@@ -70,4 +70,13 @@ public class MainActivity extends AppCompatActivity {
             locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            startListening();
+        }
+    }
 }
