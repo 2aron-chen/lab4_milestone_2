@@ -63,4 +63,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void startListening(){
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        }
+    }
 }
