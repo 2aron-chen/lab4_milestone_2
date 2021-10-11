@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     LocationManager locationManager;
     LocationListener locationListener;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,10 +97,11 @@ public class MainActivity extends AppCompatActivity {
         TextView lonTextView = (TextView) findViewById(R.id.lonTextView);
         TextView altTextView = (TextView) findViewById(R.id.altTextView);
         TextView accTextView = (TextView) findViewById(R.id.accTextView);
-        latTextView.setText("Latitude: " + location.getLatitude());
-        lonTextView.setText("Longitude: " + location.getLongitude());
-        altTextView.setText("Altitude: " + location.getAltitude());
-        accTextView.setText("Accuracy: " + location.getAccuracy());
+        Log.d(TAG, "Latitude: " + location.getLatitude());
+        latTextView.setText("" + location.getLatitude());
+        lonTextView.setText("" + location.getLongitude());
+        altTextView.setText("" + location.getAltitude());
+        accTextView.setText("" + location.getAccuracy());
 
         Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
 
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (listAddresses != null && listAddresses.size() > 0){
                 Log.i("PlaceInfo", listAddresses.get(0).toString());
-                address = "Address: \n";
+                address = "\n";
                 if (listAddresses.get(0).getSubThoroughfare() != null){
                     address += listAddresses.get(0).getSubThoroughfare() + " ";
                 }
